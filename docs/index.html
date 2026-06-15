@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nursing Govt Exam &amp; Job Tracker</title>
+<style>
+  :root {
+    --ink: #1c2b2e;
+    --paper: #f6f3ea;
+    --rail-green: #1f5f4f;
+    --signal-amber: #d9762b;
+    --line: #d8d2c2;
+    --muted: #6f7d78;
+    --card: #ffffff;
+    --urgent: #b3422f;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+    line-height: 1.5;
+  }
+
+  .masthead {
+    background: var(--rail-green);
+    color: var(--paper);
+    padding: 28px 24px 20px;
+    border-bottom: 6px double var(--signal-amber);
+  }
+
+  .masthead-inner {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .masthead h1 {
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 1.9rem;
+    margin: 0 0 4px;
+    font-weight: 600;
+  }
+
+  .masthead .sub {
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #cfe4dc;
+  }
+
+  .ticker {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    padding: 9px 24px;
+    text-transform: uppercase;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .ticker .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--signal-amber);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 28px 24px 60px;
+  }
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .filter-btn {
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding: 7px 14px;
+    border: 1px solid var(--rail-green);
+    background: transparent;
+    color: var(--rail-green);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .filter-btn:hover {
+    background: rgba(31,95,79,0.08);
+  }
+
+  .filter-btn.active {
+    background: var(--rail-green);
+    color: var(--paper);
+  }
+
+  .board {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .notice {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--rail-green);
+    padding: 16px 18px;
+    position: relative;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  .notice:hover {
+    transform: translateX(2px);
+    box-shadow: 4px 4px 0 rgba(31,95,79,0.07);
+  }
+
+  .notice.new {
+    border-left-color: var(--urgent);
+  }
+
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .tag {
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    background: rgba(31,95,79,0.1);
+    color: var(--rail-green);
+    font-weight: 600;
+  }
+
+  .tag.org { background: rgba(217,118,43,0.14); color: var(--signal-amber); }
+  .tag.status-open { background: rgba(31,95,79,0.14); color: var(--rail-green); }
+  .tag.status-result { background: rgba(111,125,120,0.15); color: var(--muted); }
+  .tag.status-admit-card { background: rgba(111,125,120,0.15); color: var(--muted); }
+  .tag.new-flag { background: rgba(179,66,47,0.14); color: var(--urgent); }
+
+  .notice h3 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .notice-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .notice-meta a {
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--rail-green);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rail-green);
+    padding-bottom: 1px;
+  }
+
+  .notice-meta a:hover {
+    color: var(--signal-amber);
+    border-color: var(--signal-amber);
+  }
+
+  footer {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px 40px;
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    .masthead h1 { font-size: 1.4rem; }
+    .notice h3 { font-size: 0.98rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <h1>Nursing Govt Exam &amp; Job Board</h1>
+    <div class="sub">AIIMS &middot; NORCET &middot; ESIC &middot; RRB &middot; State Health Depts &mdash; auto-checked every 30 min</div>
+  </div>
+</div>
+
+<div class="ticker">
+  <span class="dot"></span>
+  <span id="ticker-text">Loading last check time...</span>
+</div>
+
+<main>
+
+  <div class="filter-row" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="aiims">AIIMS / NORCET</button>
+    <button class="filter-btn" data-filter="esic">ESIC</button>
+    <button class="filter-btn" data-filter="rrb">RRB / Railways</button>
+    <button class="filter-btn" data-filter="state">State Boards</button>
+    <button class="filter-btn" data-filter="other">Others</button>
+    <button class="filter-btn" data-filter="aggregator">From Aggregators</button>
+  </div>
+
+  <div class="board" id="board"></div>
+
+  <div class="empty-state" id="empty" style="display:none;">No notices match this filter yet.</div>
+
+</main>
+
+<footer>
+  This board auto-refreshes from <code>data/notices.json</code>, which a scheduled job updates every 30 minutes
+  by scanning AIIMS, ESIC, and major aggregator sites for nursing-related keywords (nurse, NORCET, ANM, GNM, etc.).
+  Items marked NEW were found in the latest check. Always verify on the official site before applying.
+</footer>
+
+<script>
+const orgLabels = {
+  aiims: "AIIMS / NORCET",
+  esic: "ESIC",
+  rrb: "RRB / Railways",
+  state: "State Board",
+  other: "Other",
+  aggregator: "Aggregator"
+};
+
+const statusClass = {
+  open: "status-open",
+  result: "status-result",
+  "admit-card": "status-admit-card"
+};
+
+const statusLabels = {
+  open: "Open / Active",
+  result: "Result Out",
+  "admit-card": "Admit Card"
+};
+
+function timeAgo(isoString) {
+  if (!isoString) return "unknown";
+  const then = new Date(isoString);
+  const now = new Date();
+  const diffMs = now - then;
+  const mins = Math.floor(diffMs / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return mins + " min ago";
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return hours + " hr ago";
+  const days = Math.floor(hours / 24);
+  return days + " day(s) ago";
+}
+
+function isRecent(isoString, hours = 24) {
+  if (!isoString) return false;
+  const then = new Date(isoString);
+  const now = new Date();
+  return (now - then) < hours * 60 * 60 * 1000;
+}
+
+let allNotices = [];
+
+function render(filter) {
+  const board = document.getElementById('board');
+  const empty = document.getElementById('empty');
+  board.innerHTML = "";
+
+  const items = allNotices.filter(n => filter === 'all' || n.org === filter);
+
+  if (items.length === 0) {
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  items.forEach(n => {
+    const card = document.createElement('div');
+    const recent = isRecent(n.first_seen);
+    card.className = 'notice' + (recent ? ' new' : '');
+
+    const statusKey = n.status || 'open';
+
+    card.innerHTML = `
+      <div class="tags">
+        <span class="tag org">${orgLabels[n.org] || n.org}</span>
+        <span class="tag ${statusClass[statusKey] || 'status-open'}">${statusLabels[statusKey] || 'Open'}</span>
+        ${recent ? '<span class="tag new-flag">New</span>' : ''}
+      </div>
+      <h3>${n.title}</h3>
+      <div class="notice-meta">
+        <span>Source: ${n.source} &nbsp;&middot;&nbsp; Found: ${timeAgo(n.first_seen)}</span>
+        <a href="${n.link}" target="_blank" rel="noopener">Open link &rarr;</a>
+      </div>
+    `;
+    board.appendChild(card);
+  });
+}
+
+document.getElementById('filters').addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  render(e.target.dataset.filter);
+});
+
+fetch('data/notices.json')
+  .then(r => r.json())
+  .then(data => {
+    allNotices = data.notices || [];
+    const lastRun = data.last_run;
+    document.getElementById('ticker-text').textContent =
+      lastRun ? `Last checked: ${timeAgo(lastRun)} (every 30 min)` : "Not yet checked";
+    render('all');
+  })
+  .catch(err => {
+    document.getElementById('ticker-text').textContent = "Could not load data/notices.json";
+    document.getElementById('empty').style.display = 'block';
+    document.getElementById('empty').textContent = "Data file not found. The scraper may not have run yet.";
+  });
+</script>
+
+</body>
+</html>
