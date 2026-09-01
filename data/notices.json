@@ -1,6 +1,14 @@
 {
-  "last_run": "2026-09-01T00:21:44.894649+00:00",
+  "last_run": "2026-09-01T05:26:49.348380+00:00",
   "notices": [
+    {
+      "title": "IIT Hyderabad Staff Nurse Recruitment 2026, Apply Online at @iith.ac.in",
+      "link": "https://nursingjobalert.com/iit-hyderabad-staff-nurse-recruitment-2026/",
+      "source": "NursingJobAlert - Nursing Officer Vacancy",
+      "org": "aggregator",
+      "status": "open",
+      "first_seen": "2026-09-01T05:26:49.348346+00:00"
+    },
     {
       "title": "Max Hospital Staff Nurse Vacancy 2026: Apply Online for 100 Vacancies",
       "link": "https://nursingjobalert.com/max-hospital-staff-nurse-vacancy-2026/",
@@ -1192,14 +1200,6 @@
       "org": "state",
       "status": "result",
       "first_seen": "2026-02-07T00:00:00+00:00"
-    },
-    {
-      "title": "NCL HEMM Operator, Staff Nurse, Overseer Civil Online Form 2026",
-      "link": "https://www.sarkariresult.com/2026/ncl-hemm-staff-overseer-apr26/",
-      "source": "Sarkari Result",
-      "org": "other",
-      "status": "open",
-      "first_seen": "2026-04-01T00:00:00+00:00"
     }
   ]
 }
