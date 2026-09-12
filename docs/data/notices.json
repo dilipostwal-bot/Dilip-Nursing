@@ -1,6 +1,30 @@
 {
-  "last_run": "2026-09-12T07:50:00.973096+00:00",
+  "last_run": "2026-09-12T11:57:37.471608+00:00",
   "notices": [
+    {
+      "title": "OSSSC Nursing Officer Admit Card 2026 Out: Download Link Activated",
+      "link": "https://nursingjobalert.com/osssc-nursing-officer-admit-card-2026/",
+      "source": "NursingJobAlert - Nursing Officer Vacancy",
+      "org": "aggregator",
+      "status": "admit-card",
+      "first_seen": "2026-09-12T11:57:37.471551+00:00"
+    },
+    {
+      "title": "AIIMS NORCET 11 2026 Answer Key: Paper Solution, Cut-off Marks",
+      "link": "https://nursingjobalert.com/aiims-norcet-11-2026-answer-key-2026/",
+      "source": "NursingJobAlert - Nursing Officer Vacancy",
+      "org": "aggregator",
+      "status": "open",
+      "first_seen": "2026-09-12T11:57:37.471578+00:00"
+    },
+    {
+      "title": "SAIL Nurse Vacancy 2026: Notification, Eligibility, Salary & Apply Online",
+      "link": "https://nursingjobalert.com/sail-nurse-vacancy-2026/",
+      "source": "NursingJobAlert - Nursing Officer Vacancy",
+      "org": "aggregator",
+      "status": "open",
+      "first_seen": "2026-09-12T11:57:37.471583+00:00"
+    },
     {
       "title": "GMCH Chandigarh Staff Nurse Recruitment 2026: Eligibility, Salary, Apply Online",
       "link": "https://nursingjobalert.com/gmch-chandigarh-staff-nurse-recruitment-2026/",
@@ -1176,30 +1200,6 @@
       "org": "aggregator",
       "status": "open",
       "first_seen": "2026-06-15T22:02:22.646272+00:00"
-    },
-    {
-      "title": "AIIMS NORCET 10th Online Form 2026",
-      "link": "https://www.sarkariresult.com/2026/aiims-norcet-10th/",
-      "source": "Sarkari Result",
-      "org": "aiims",
-      "status": "open",
-      "first_seen": "2026-02-24T00:00:00+00:00"
-    },
-    {
-      "title": "AIIMS NORCET 11 Notification 2026 (Expected June/July 2026)",
-      "link": "https://www.aiimsexams.ac.in/",
-      "source": "Manual seed - official site",
-      "org": "aiims",
-      "status": "open",
-      "first_seen": "2026-06-15T00:00:00+00:00"
-    },
-    {
-      "title": "ESIC Staff Nurse Recruitment 2026 (Notification awaited, 2000+ posts expected)",
-      "link": "https://www.esic.gov.in/recruitments",
-      "source": "Manual seed - official site",
-      "org": "esic",
-      "status": "open",
-      "first_seen": "2026-06-15T00:00:00+00:00"
     }
   ]
 }
