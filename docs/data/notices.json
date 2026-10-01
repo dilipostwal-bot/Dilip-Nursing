@@ -1,6 +1,14 @@
 {
-  "last_run": "2026-10-01T00:08:33.726055+00:00",
+  "last_run": "2026-10-01T06:19:33.434439+00:00",
   "notices": [
+    {
+      "title": "Staff Nurse Vacancy 2026: Apply Online for 4155 Posts for GNM/BSc Nursing/ANM Jobs",
+      "link": "https://nursingjobalert.com/staff-nurse-vacancy-2026/",
+      "source": "NursingJobAlert - Nursing Officer Vacancy",
+      "org": "aggregator",
+      "status": "open",
+      "first_seen": "2026-10-01T06:19:33.434403+00:00"
+    },
     {
       "title": "BSF Nursing Assistant Recruitment 2026 Apply Online for 658 Vacancies",
       "link": "https://nursingjobalert.com/bsf-nursing-assistant-recruitment-2026/",
@@ -1192,14 +1200,6 @@
       "org": "aggregator",
       "status": "open",
       "first_seen": "2026-06-15T22:02:22.646223+00:00"
-    },
-    {
-      "title": "NextSGPGI Nursing Officer Admit Card 2026 (1200 Post) Released on (20 June)",
-      "link": "https://nursingjobalert.com/sgpgi-nursing-officer-admit-card-2026/",
-      "source": "NursingJobAlert - Nursing Officer Vacancy",
-      "org": "aggregator",
-      "status": "admit-card",
-      "first_seen": "2026-06-15T22:02:22.646226+00:00"
     }
   ]
 }
